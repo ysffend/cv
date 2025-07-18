@@ -14,7 +14,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fab1a0);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -25,71 +27,116 @@
             overflow-x: hidden;
         }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         /* Animated background elements */
         .bg-element {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
             animation: float 6s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .bg-element:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 10%;
-            left: 10%;
+            width: 120px;
+            height: 120px;
+            top: 5%;
+            left: 5%;
             animation-delay: 0s;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.3), rgba(255, 193, 7, 0.3));
         }
 
         .bg-element:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            top: 20%;
-            right: 10%;
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            right: 5%;
             animation-delay: -2s;
+            background: linear-gradient(45deg, rgba(107, 207, 127, 0.3), rgba(78, 205, 196, 0.3));
         }
 
         .bg-element:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            bottom: 10%;
-            left: 15%;
+            width: 150px;
+            height: 150px;
+            bottom: 5%;
+            left: 10%;
             animation-delay: -4s;
+            background: linear-gradient(45deg, rgba(69, 183, 209, 0.3), rgba(150, 206, 180, 0.3));
         }
 
         .bg-element:nth-child(4) {
-            width: 70px;
-            height: 70px;
-            bottom: 20%;
-            right: 15%;
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            right: 10%;
             animation-delay: -1s;
+            background: linear-gradient(45deg, rgba(255, 234, 167, 0.3), rgba(250, 177, 160, 0.3));
+        }
+
+        .bg-element:nth-child(5) {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 2%;
+            animation-delay: -3s;
+            background: linear-gradient(45deg, rgba(255, 107, 107, 0.4), rgba(255, 193, 7, 0.4));
+        }
+
+        .bg-element:nth-child(6) {
+            width: 90px;
+            height: 90px;
+            top: 60%;
+            right: 3%;
+            animation-delay: -5s;
+            background: linear-gradient(45deg, rgba(107, 207, 127, 0.4), rgba(78, 205, 196, 0.4));
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            33% { transform: translateY(-30px) rotate(120deg) scale(1.1); }
+            66% { transform: translateY(-15px) rotate(240deg) scale(0.9); }
         }
 
         .container {
             text-align: center;
             z-index: 10;
             position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
         }
 
         .title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: bold;
             margin-bottom: 40px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titlePulse 2s ease-in-out infinite alternate;
+            animation: titlePulse 2s ease-in-out infinite alternate, gradientShift 4s ease infinite;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         @keyframes titlePulse {
             0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+            100% { transform: scale(1.08); }
         }
 
         .profile-section {
@@ -97,19 +144,30 @@
         }
 
         .profile-image-sosmed {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             margin: 0 auto 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            object-fit: cover; /* Ensure the image covers the area */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            animation: profileGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes profileGlow {
+            0% { box-shadow: 0 30px 60px rgba(255, 107, 107, 0.4), 0 0 0 0 rgba(255, 107, 107, 0.4); }
+            25% { box-shadow: 0 30px 60px rgba(255, 193, 7, 0.4), 0 0 0 10px rgba(255, 193, 7, 0.1); }
+            50% { box-shadow: 0 30px 60px rgba(107, 207, 127, 0.4), 0 0 0 20px rgba(107, 207, 127, 0.1); }
+            75% { box-shadow: 0 30px 60px rgba(78, 205, 196, 0.4), 0 0 0 15px rgba(78, 205, 196, 0.1); }
+            100% { box-shadow: 0 30px 60px rgba(69, 183, 209, 0.4), 0 0 0 5px rgba(69, 183, 209, 0.1); }
         }
 
         .profile-image-sosmed:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
         }
 
         .profile-image-sosmed img {
@@ -119,40 +177,32 @@
             border-radius: 50%;
         }
 
-        .profile-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-        }
-
         .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 25px;
             margin-bottom: 50px;
+            max-width: 800px;
+            margin: 0 auto 50px;
         }
 
         .social-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #6c757d;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             color: white;
             text-decoration: none;
-            font-size: 2rem;
+            font-size: 2.5rem;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .social-icon::before {
@@ -168,59 +218,93 @@
             transition: transform 0.3s ease;
         }
 
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
         .social-icon:hover::before {
             transform: scale(1);
         }
 
+        .social-icon:hover::after {
+            width: 100px;
+            height: 100px;
+        }
+
         .social-icon:hover {
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-15px) scale(1.2) rotate(360deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
         }
 
         .social-icon i {
             position: relative;
             z-index: 2;
+            transition: all 0.3s ease;
         }
 
-        /* Brand Colors */
+        .social-icon:hover i {
+            transform: scale(1.2);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Brand Colors with enhanced gradients */
         .social-icon.instagram:hover {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 25px 50px rgba(240, 148, 51, 0.5);
         }
 
         .social-icon.whatsapp:hover {
-            background: #25d366;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            box-shadow: 0 25px 50px rgba(37, 211, 102, 0.5);
         }
 
         .social-icon.youtube:hover {
-            background: #ff0000;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            box-shadow: 0 25px 50px rgba(255, 0, 0, 0.5);
         }
 
         .social-icon.spotify:hover {
-            background: #1db954;
+            background: linear-gradient(45deg, #1db954, #1ed760);
+            box-shadow: 0 25px 50px rgba(29, 185, 84, 0.5);
         }
 
         .social-icon.github:hover {
-            background: #333;
+            background: linear-gradient(45deg, #333, #555);
+            box-shadow: 0 25px 50px rgba(51, 51, 51, 0.5);
         }
 
         .social-icon.email:hover {
-            background: linear-gradient(45deg, #ea4335, #fbbc04);
+            background: linear-gradient(45deg, #ea4335, #fbbc04, #34a853, #4285f4);
+            box-shadow: 0 25px 50px rgba(234, 67, 53, 0.5);
         }
 
         .social-icon.linkedin:hover {
-            background: #0077b5;
+            background: linear-gradient(45deg, #0077b5, #00a0dc);
+            box-shadow: 0 25px 50px rgba(0, 119, 181, 0.5);
         }
 
         .social-icon.twitter:hover {
-            background: #1da1f2;
+            background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+            box-shadow: 0 25px 50px rgba(29, 161, 242, 0.5);
         }
 
         .social-icon.tiktok:hover {
             background: linear-gradient(45deg, #ff0050, #00f2ea);
+            box-shadow: 0 25px 50px rgba(255, 0, 80, 0.5);
         }
 
         .social-icon.facebook:hover {
-            background: #1877f2;
+            background: linear-gradient(45deg, #1877f2, #42a5f5);
+            box-shadow: 0 25px 50px rgba(24, 119, 242, 0.5);
         }
 
         .footer {
@@ -229,60 +313,87 @@
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            color: #6c757d;
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .back-button {
             position: fixed;
             top: 20px;
             left: 20px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
+            padding: 15px 30px;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
             z-index: 100;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(45deg, #ffd93d, #ff6b6b);
         }
 
         .back-button i {
-            margin-right: 8px;
+            margin-right: 10px;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: floatParticle 6s ease-in-out infinite;
+        }
+
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(-100px) translateX(50px) rotate(180deg); opacity: 1; }
+            90% { opacity: 1; }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
             .title {
-                font-size: 2rem;
+                font-size: 2.2rem;
                 margin-bottom: 30px;
             }
 
             .social-icons {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
                 gap: 20px;
             }
 
             .social-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
             }
 
             .profile-image-sosmed {
-                width: 120px;
-                height: 120px;
-            }
-
-            .profile-placeholder {
-                font-size: 50px;
+                width: 150px;
+                height: 150px;
             }
         }
 
@@ -292,18 +403,19 @@
             }
 
             .social-icons {
+                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
                 gap: 15px;
             }
 
             .social-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
 
             .back-button {
-                padding: 10px 20px;
-                font-size: 12px;
+                padding: 12px 24px;
+                font-size: 14px;
             }
         }
 
@@ -311,7 +423,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -320,7 +432,7 @@
         }
 
         .container > * {
-            animation: fadeInUp 0.8s ease forwards;
+            animation: fadeInUp 1s ease forwards;
         }
 
         .title {
@@ -352,8 +464,10 @@
     <div class="bg-element"></div>
     <div class="bg-element"></div>
     <div class="bg-element"></div>
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
 
-    <a href="cv.html" class="back-button">
+    <a href="index.html" class="back-button">
         <i class="fas fa-arrow-left"></i>
         Kembali
     </a>
@@ -361,7 +475,9 @@
     <div class="container">
         <h1 class="title">Ikuti Media Sosial Saya Ya!!!</h1>
         
-        <img src="fendi.jpg" class="profile-image-sosmed" alt="Foto Profil Fendi">
+        <div class="profile-section">
+            <img src="fendi.jpg" class="profile-image-sosmed" alt="Foto Profil Fendi">
+        </div>
 
         <div class="social-icons">
             <a href="https://www.instagram.com/ysffen_?igsh=MWU4a3V1YTJlZXEyaA==" class="social-icon instagram" target="_blank" title="Instagram">
@@ -407,71 +523,170 @@
     </div>
 
     <div class="footer">
-        <p>© 2025 Fendi. Dibuat dengan HTML & CSS.</p>
+        <p><b>© 2025 Fendi. Dibuat dengan HTML & CSS.</b></p>
     </div>
 
     <script>
-        // Add click animation
+        // Enhanced click animation with color burst
         document.querySelectorAll('.social-icon').forEach(icon => {
             icon.addEventListener('click', function(e) {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.6);
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    pointer-events: none;
-                `;
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
+                // Create multiple ripple effects
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const ripple = document.createElement('span');
+                        const rect = this.getBoundingClientRect();
+                        const size = Math.max(rect.width, rect.height) * (1 + i * 0.3);
+                        const x = e.clientX - rect.left - size / 2;
+                        const y = e.clientY - rect.top - size / 2;
+                        
+                        const colors = ['rgba(255, 107, 107, 0.6)', 'rgba(255, 193, 7, 0.6)', 'rgba(107, 207, 127, 0.6)', 'rgba(78, 205, 196, 0.6)', 'rgba(69, 183, 209, 0.6)'];
+                        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                        
+                        ripple.style.cssText = `
+                            position: absolute;
+                            border-radius: 50%;
+                            background: ${randomColor};
+                            transform: scale(0);
+                            animation: ripple 1s ease-out;
+                            width: ${size}px;
+                            height: ${size}px;
+                            left: ${x}px;
+                            top: ${y}px;
+                            pointer-events: none;
+                            z-index: 1000;
+                        `;
+                        
+                        this.appendChild(ripple);
+                        
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 1000);
+                    }, i * 100);
+                }
             });
         });
 
-        // Add CSS for ripple animation
+        // Enhanced CSS for ripple animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes ripple {
-                to {
-                    transform: scale(2);
+                0% {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.5);
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: scale(3);
                     opacity: 0;
                 }
             }
         `;
         document.head.appendChild(style);
 
-        // Add parallax effect to background elements
+        // Enhanced parallax effect
         document.addEventListener('mousemove', (e) => {
             const bgElements = document.querySelectorAll('.bg-element');
             const mouseX = e.clientX / window.innerWidth;
             const mouseY = e.clientY / window.innerHeight;
             
             bgElements.forEach((element, index) => {
-                const speed = (index + 1) * 0.5;
-                const x = (mouseX - 0.5) * speed * 50;
-                const y = (mouseY - 0.5) * speed * 50;
+                const speed = (index + 1) * 0.8;
+                const x = (mouseX - 0.5) * speed * 60;
+                const y = (mouseY - 0.5) * speed * 60;
+                const rotation = (mouseX - 0.5) * speed * 20;
                 
-                element.style.transform = `translate(${x}px, ${y}px)`;
+                element.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
             });
+
+            // Move container slightly with mouse
+            const container = document.querySelector('.container');
+            const containerX = (mouseX - 0.5) * 10;
+            const containerY = (mouseY - 0.5) * 10;
+            container.style.transform = `translate(${containerX}px, ${containerY}px)`;
         });
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '100%';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            
+            const colors = ['rgba(255, 107, 107, 0.8)', 'rgba(255, 193, 7, 0.8)', 'rgba(107, 207, 127, 0.8)', 'rgba(78, 205, 196, 0.8)', 'rgba(69, 183, 209, 0.8)'];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 800);
+
+        // Add shake effect to profile image on hover
+        const profileImage = document.querySelector('.profile-image-sosmed');
+        profileImage.addEventListener('mouseenter', function() {
+            this.style.animation = 'profileGlow 3s ease-in-out infinite alternate, shake 0.5s ease-in-out';
+        });
+
+        profileImage.addEventListener('mouseleave', function() {
+            this.style.animation = 'profileGlow 3s ease-in-out infinite alternate';
+        });
+
+        // Add shake animation
+        const shakeStyle = document.createElement('style');
+        shakeStyle.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px) rotate(-5deg); }
+                75% { transform: translateX(5px) rotate(5deg); }
+            }
+        `;
+        document.head.appendChild(shakeStyle);
 
         // Add loading animation
         window.addEventListener('load', () => {
             document.body.style.opacity = '1';
+            
+            // Add welcome animation
+            setTimeout(() => {
+                const title = document.querySelector('.title');
+                title.style.animation += ', bounce 1s ease-in-out';
+            }, 1000);
+        });
+
+        // Add bounce animation
+        const bounceStyle = document.createElement('style');
+        bounceStyle.textContent = `
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0) scale(1); }
+                50% { transform: translateY(-20px) scale(1.1); }
+            }
+        `;
+        document.head.appendChild(bounceStyle);
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const socialIcons = document.querySelectorAll('.social-icon');
+            const currentFocused = document.activeElement;
+            let currentIndex = Array.from(socialIcons).indexOf(currentFocused);
+            
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                currentIndex = (currentIndex + 1) % socialIcons.length;
+                socialIcons[currentIndex].focus();
+                e.preventDefault();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                currentIndex = (currentIndex - 1 + socialIcons.length) % socialIcons.length;
+                socialIcons[currentIndex].focus();
+                e.preventDefault();
+            }
         });
     </script>
 </body>
