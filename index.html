@@ -6,6 +6,7 @@
     <title>Portofolio - Fendi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* General Styles */
         * {
             margin: 0;
             padding: 0;
@@ -16,9 +17,33 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00A3BF 0%, #00BFB3 100%); /* Cool, vibrant gradient */
             min-height: 100vh;
-            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+            overflow-x: hidden;
+            position: relative; /* For background animations */
+        }
+
+        /* Background animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Subtle pattern */
+            opacity: 0.15; /* Slightly more visible */
+            z-index: -1;
+            animation: backgroundPan 90s linear infinite; /* Slower pan */
+        }
+
+        @keyframes backgroundPan {
+            from {
+                background-position: 0% 0%;
+            }
+            to {
+                background-position: 100% 100%;
+            }
         }
 
         .container {
@@ -27,114 +52,152 @@
             padding: 20px;
         }
 
+        /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.98); /* Slightly more opaque */
+            backdrop-filter: blur(20px); /* Increased blur */
+            border-radius: 30px; /* More rounded */
+            padding: 60px; /* Increased padding */
             text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); /* Stronger shadow */
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Subtle border */
         }
 
         header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            top: -60%;
+            left: -60%;
+            width: 220%;
+            height: 220%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent); /* Stronger shine */
             transform: rotate(45deg);
-            animation: shine 3s infinite;
+            animation: shine 5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother shine animation */
         }
 
         @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            0% { transform: translateX(-150%) translateY(-150%) rotate(45deg); }
+            100% { transform: translateX(150%) translateY(150%) rotate(45deg); }
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 200px; /* Larger image */
+            height: 200px;
             border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            object-fit: cover; /* Ensure the image covers the area */
+            margin: 0 auto 30px;
+            display: block; /* Ensures centering */
+            object-fit: cover;
+            border: 8px solid #00BFB3; /* Vibrant border */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+            animation: pulseProfile 2.5s infinite alternate; /* Pulsing animation */
+        }
+
+        @keyframes pulseProfile {
+            from { transform: scale(1); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+            to { transform: scale(1.08); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); }
         }
 
         .profile-img:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.2) rotate(10deg); /* Even more pronounced hover */
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            font-size: 3.5em; /* Larger heading */
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00A3BF, #00BFB3); /* New vibrant gradient */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
         }
 
         .subtitle {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 20px;
+            font-size: 1.5em; /* Larger subtitle */
+            color: #444;
+            margin-bottom: 40px;
+            font-weight: 300;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 30px; /* Increased gap */
             flex-wrap: wrap;
         }
 
         .social-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            gap: 12px; /* Increased gap */
+            padding: 15px 30px; /* Larger padding */
+            background: linear-gradient(45deg, #00A3BF, #00BFB3); /* New vibrant gradient */
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-size: 14px;
+            border-radius: 35px; /* More rounded */
+            transition: all 0.5s ease-in-out; /* Smoother transition */
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%; /* Start further left */
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4); /* Stronger overlay */
+            transition: all 0.6s ease-in-out;
+            transform: skewX(-20deg); /* Skewed effect */
+        }
+
+        .social-link:hover::before {
+            left: 120%; /* Move past button */
         }
 
         .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-7px) scale(1.07); /* More pronounced hover */
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+            color: #e0e0e0; /* Slightly off-white for contrast */
         }
 
+        .social-link i {
+            font-size: 1.4em; /* Larger icons */
+        }
+
+        /* Section Styles */
         .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.98); /* Slightly more opaque */
+            backdrop-filter: blur(20px); /* Increased blur */
+            border-radius: 30px; /* More rounded */
+            padding: 50px; /* Increased padding */
+            margin-bottom: 50px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Subtle border */
         }
 
         .section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02); /* More pronounced hover */
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25);
         }
 
         .section h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
+            font-size: 3em; /* Larger heading */
+            margin-bottom: 40px;
             color: #333;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08);
         }
 
         .section h2::after {
@@ -142,136 +205,161 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 2px;
+            width: 80px; /* Longer underline */
+            height: 5px; /* Thicker underline */
+            background: linear-gradient(45deg, #00A3BF, #00BFB3); /* New vibrant gradient */
+            border-radius: 3px;
         }
 
+        /* Timeline Styles */
         .timeline {
             position: relative;
-            padding-left: 30px;
+            padding-left: 50px; /* More space for the line */
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 15px;
+            left: 22px; /* Adjusted position */
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
+            width: 4px; /* Thicker line */
+            background: linear-gradient(to bottom, #00A3BF, #00BFB3); /* New vibrant gradient */
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(102, 126, 234, 0.05);
-            border-radius: 15px;
-            border-left: 4px solid #667eea;
-            min-height: 180px; /* Added: Ensure consistent height for timeline items */
-            display: flex; /* Added: Use flexbox for better content alignment */
-            flex-direction: column; /* Added: Stack content vertically */
-            justify-content: center; /* Added: Center content vertically */
+            margin-bottom: 40px; /* Increased margin */
+            padding: 30px; /* Increased padding */
+            background: rgba(0, 163, 191, 0.1); /* Lighter, more pastel shade of the primary color */
+            border-radius: 20px; /* More rounded */
+            border-left: 6px solid #00A3BF; /* Vibrant border */
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:hover {
+            transform: scale(1.05); /* More pronounced hover */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -37px;
-            top: 25px;
-            width: 12px;
-            height: 12px;
-            background: #667eea;
+            left: -48px; /* Adjusted position */
+            top: 35px;
+            width: 18px; /* Larger dot */
+            height: 18px;
+            background: #00A3BF; /* Vibrant dot color */
             border-radius: 50%;
-            border: 3px solid white;
+            border: 5px solid white; /* Thicker white border */
+            box-shadow: 0 0 0 5px rgba(0, 163, 191, 0.5); /* Pulsing effect for the dot */
+            animation: pulseDot 1.8s infinite alternate;
+        }
+
+        @keyframes pulseDot {
+            from { box-shadow: 0 0 0 5px rgba(0, 163, 191, 0.5); }
+            to { box-shadow: 0 0 0 10px rgba(0, 163, 191, 0.9); }
         }
 
         .timeline-date {
             font-weight: bold;
-            color: #667eea;
-            font-size: 0.9em;
-            margin-bottom: 5px;
+            color: #00A3BF; /* Vibrant date color */
+            font-size: 1.1em; /* Slightly larger */
+            margin-bottom: 10px;
         }
 
         .timeline-title {
-            font-size: 1.2em;
+            font-size: 1.5em; /* Larger title */
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             color: #333;
         }
 
         .timeline-subtitle {
             color: #666;
             font-style: italic;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .timeline-description {
             color: #555;
-            line-height: 1.6;
+            line-height: 1.8; /* Increased line height for readability */
         }
 
+        /* Skills Grid Styles */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger min width */
+            gap: 30px; /* Increased gap */
         }
 
         .skill-category {
-            background: rgba(102, 126, 234, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid #667eea;
+            background: rgba(0, 163, 191, 0.1); /* Lighter pastel shade */
+            padding: 35px; /* Increased padding */
+            border-radius: 20px; /* More rounded */
+            border-left: 6px solid #00A3BF; /* Vibrant border */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .skill-category h3 {
-            font-size: 1.3em;
-            margin-bottom: 15px;
+            font-size: 1.6em; /* Larger heading */
+            margin-bottom: 25px;
             color: #333;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+            padding-bottom: 12px;
         }
 
         .skill-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            padding: 8px 0;
+            margin-bottom: 15px;
+            padding: 12px 0;
         }
 
         .skill-bar {
-            width: 100px;
-            height: 8px;
-            background: rgba(102, 126, 234, 0.2);
-            border-radius: 4px;
+            width: 150px; /* Wider bar */
+            height: 12px; /* Thicker bar */
+            background: rgba(0, 163, 191, 0.2); /* Lighter background for the bar */
+            border-radius: 6px;
             overflow: hidden;
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 4px;
-            transition: width 0.3s ease;
+            background: linear-gradient(45deg, #00A3BF, #00BFB3); /* Vibrant gradient for progress */
+            border-radius: 6px;
+            transition: width 0.8s ease-out; /* Smoother animation */
         }
 
-        /* Swiper CSS for slide animation */
+        /* Swiper CSS for slide animation (Enhanced) */
         .swiper-container {
             width: 100%;
             height: auto;
-            overflow: hidden; /* Hide overflow to prevent scrollbars */
+            overflow: hidden;
             position: relative;
         }
 
         .swiper-wrapper {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother cubic-bezier */
         }
 
         .swiper-slide {
             flex: 0 0 auto;
-            width: 100%; /* Each slide takes full width */
-            padding: 10px;
+            width: 100%;
+            padding: 20px; /* Increased padding */
             box-sizing: border-box;
         }
 
@@ -279,138 +367,168 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(102, 126, 234, 0.7);
+            background: rgba(0, 163, 191, 0.8); /* More vibrant buttons */
             color: white;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 50px; /* Larger buttons */
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 10;
-            transition: background 0.3s ease;
+            transition: background 0.4s ease, transform 0.3s ease;
+            font-size: 1.4em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .swiper-button-prev:hover, .swiper-button-next:hover {
-            background: #667eea;
+            background: #00A3BF; /* Solid hover color */
+            transform: translateY(-50%) scale(1.15); /* More pronounced scale on hover */
         }
 
         .swiper-button-prev {
-            left: 10px;
+            left: 20px; /* Adjusted position */
         }
 
         .swiper-button-next {
-            right: 10px;
+            right: 20px; /* Adjusted position */
         }
 
         .swiper-pagination {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px; /* Increased margin */
         }
 
         .swiper-pagination-bullet {
             display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: rgba(102, 126, 234, 0.5);
+            width: 14px; /* Larger bullets */
+            height: 14px;
+            background: rgba(0, 163, 191, 0.5); /* More vibrant bullet background */
             border-radius: 50%;
-            margin: 0 5px;
+            margin: 0 8px; /* Increased margin */
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.4s ease, transform 0.3s ease;
         }
 
         .swiper-pagination-bullet-active {
-            background: #667eea;
+            background: #00A3BF; /* Vibrant active bullet */
+            transform: scale(1.3); /* Scale active bullet */
+            box-shadow: 0 0 0 5px rgba(0, 163, 191, 0.3);
         }
 
+        /* Achievement Card Styles */
         .achievement-card {
-            background: rgba(102, 126, 234, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
-            min-height: 200px; /* Added: Ensure consistent height for achievement cards */
-            display: flex; /* Added: Use flexbox for better content alignment */
-            flex-direction: column; /* Added: Stack content vertically */
-            justify-content: center; /* Added: Center content vertically */
+            background: rgba(0, 163, 191, 0.1); /* Lighter pastel shade */
+            padding: 35px; /* Increased padding */
+            border-radius: 20px; /* More rounded */
+            border-left: 6px solid #00A3BF; /* Vibrant border */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            min-height: 250px; /* Slightly taller cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center content */
         }
 
-        .achievement-card:hover, .timeline-item:hover {
-            transform: scale(1.02);
+        .achievement-card:hover {
+            transform: scale(1.05); /* More pronounced hover */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
 
         .achievement-icon {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #667eea;
+            font-size: 3em; /* Larger icon */
+            margin-bottom: 25px;
+            color: #00A3BF; /* Vibrant icon color */
         }
 
         .achievement-title {
-            font-size: 1.2em;
+            font-size: 1.4em; /* Larger title */
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #333;
         }
 
         .achievement-description {
             color: #555;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
+        /* Navbar Styles */
         .navbar {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 10px;
+            top: 30px; /* Slightly lower */
+            right: 30px; /* Slightly further right */
+            background: rgba(255, 255, 255, 0.98); /* Slightly more opaque */
+            backdrop-filter: blur(20px); /* Increased blur */
+            border-radius: 35px; /* More rounded */
+            padding: 15px; /* Increased padding */
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Subtle border */
         }
 
         .navbar a {
             display: inline-block;
-            padding: 8px 16px;
-            margin: 0 2px;
+            padding: 12px 20px; /* Larger padding */
+            margin: 0 5px; /* Increased margin */
             text-decoration: none;
-            color: #666;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            font-size: 14px;
+            color: #444; /* Slightly darker grey for text */
+            border-radius: 30px; /* More rounded */
+            transition: all 0.4s ease-in-out;
+            font-size: 16px;
+            font-weight: 500;
         }
 
         .navbar a:hover {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #00A3BF, #00BFB3); /* Vibrant hover background */
             color: white;
+            transform: translateY(-3px) scale(1.05); /* Slight lift and scale on hover */
         }
 
-        /* New styles for skill diagrams */
+        /* Skill Diagrams (Enhanced) */
         .skill-diagram {
-            width: 100px;
-            height: 100px;
+            width: 140px; /* Larger circles */
+            height: 140px;
             position: relative;
-            margin: 0 auto 10px;
+            margin: 0 auto 15px; /* Increased margin */
         }
 
         .skill-circle {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: conic-gradient(#667eea var(--progress), rgba(102, 126, 234, 0.2) 0);
+            background: conic-gradient(#00A3BF var(--progress), rgba(0, 163, 191, 0.2) 0); /* Vibrant gradient */
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             color: #333;
-            font-size: 1.2em;
+            font-size: 1.6em; /* Larger percentage text */
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.15); /* Inner shadow */
+            transition: background 2s ease-out; /* Slower, smoother animation */
+            position: relative;
+        }
+
+        .skill-circle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 75%; /* Slightly smaller inner circle */
+            height: 75%;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
         }
 
         .skill-diagram-label {
             text-align: center;
-            font-size: 0.9em;
+            font-size: 1.1em; /* Slightly larger label */
             color: #555;
+            font-weight: 500;
         }
 
         .skill-item-diagram {
@@ -418,19 +536,24 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 20px; /* Increased padding */
+            transition: transform 0.4s ease;
+        }
+
+        .skill-item-diagram:hover {
+            transform: translateY(-8px);
         }
 
         /* Animations */
         .section.animate {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(40px); /* Larger initial translateY */
         }
 
         .section.animate.visible {
             opacity: 1;
             transform: translateY(0);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 1s ease-out, transform 1s ease-out; /* Slower, smoother transition */
         }
 
         .skill-progress.animate {
@@ -439,97 +562,108 @@
 
         .skill-progress.animate.visible {
             width: var(--skill-width);
-            transition: width 1s ease-out;
+            transition: width 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
         }
 
         .skill-circle.animate {
-            background: conic-gradient(#667eea 0%, rgba(102, 126, 234, 0.2) 0);
+            background: conic-gradient(#00A3BF 0%, rgba(0, 163, 191, 0.2) 0);
         }
 
         .skill-circle.animate.visible {
-            background: conic-gradient(#667eea var(--progress), rgba(102, 126, 234, 0.2) 0);
-            transition: background 1.5s ease-out;
+            background: conic-gradient(#00A3BF var(--progress), rgba(0, 163, 191, 0.2) 0);
+            transition: background 2.5s ease-out; /* Slower, smoother animation */
         }
 
-        /* Responsive Adjustments for better display */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
             }
             
             header {
-                padding: 20px;
+                padding: 30px;
+                margin-bottom: 40px;
             }
             
             .section {
-                padding: 20px;
+                padding: 30px;
+                margin-bottom: 40px;
             }
             
             h1 {
-                font-size: 2em;
+                font-size: 2.8em;
+            }
+            
+            .profile-img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .subtitle {
+                font-size: 1.3em;
             }
             
             .navbar {
-                display: none;
+                display: none; /* Keep navbar hidden for smaller screens */
             }
             
             .social-links {
                 flex-direction: column;
                 align-items: center;
+                gap: 20px;
             }
 
-            /* Adjustments for swiper slides on smaller screens */
             .swiper-slide {
-                padding: 5px; /* Reduced padding */
+                padding: 15px;
             }
 
             .timeline-item, .achievement-card {
-                padding: 15px; /* Reduced padding */
-                min-height: unset; /* Allow height to adjust based on content */
+                padding: 25px;
+                min-height: unset;
             }
 
             .timeline-title, .achievement-title {
-                font-size: 1.1em; /* Slightly smaller font */
+                font-size: 1.3em;
             }
 
             .timeline-description, .achievement-description {
-                font-size: 0.95em; /* Slightly smaller font */
+                font-size: 0.95em;
             }
 
             .skill-diagram {
-                width: 80px; /* Smaller skill circles */
-                height: 80px;
+                width: 120px;
+                height: 120px;
             }
 
             .skill-circle {
-                font-size: 1em; /* Smaller font in skill circles */
+                font-size: 1.3em;
             }
         }
 
         @media (max-width: 480px) {
             .section {
-                padding: 15px;
+                padding: 20px;
             }
 
             .section h2 {
-                font-size: 1.8em;
-                margin-bottom: 20px;
+                font-size: 2.2em;
+                margin-bottom: 30px;
             }
 
             .timeline-item, .achievement-card {
-                padding: 10px;
+                padding: 20px;
             }
 
             .timeline-date {
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
 
             .timeline-title, .achievement-title {
-                font-size: 1em;
+                font-size: 1.2em;
             }
 
             .timeline-subtitle {
-                font-size: 0.9em;
+                font-size: 1em;
             }
 
             .timeline-description, .achievement-description {
@@ -537,12 +671,12 @@
             }
 
             .skill-diagram {
-                width: 70px;
-                height: 70px;
+                width: 100px;
+                height: 100px;
             }
 
             .skill-circle {
-                font-size: 0.9em;
+                font-size: 1.1em;
             }
         }
     </style>
@@ -556,14 +690,20 @@
         <a href="#committee">Kepanitiaan</a>
         <a href="#achievements">Prestasi</a>
         <a href="#skills">Keahlian</a>
-        <a href="sosmed.html">sosialmedia</a>
+        <a href="sosmed.html">Sosial Media</a>
     </nav>
 
     <div class="container">
         <header id="home">
             <img src="sayafendi.jpg" class="profile-img" alt="Foto Profil Fendi">
             <h1>Muhammad Effendi Yusuf</h1>
-            <p class="subtitle">Mahasiswa / FrontEnd</p>
+            <p class="subtitle">Mahasiswa / FrontEnd Developer</p>
+            <div class="social-links">
+                <a href="#" class="social-link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="#" class="social-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="mailto:fendiysf70@gmail.com" class="social-link" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+            </div>
         </header>
 
         <section class="section" id="about">
@@ -584,7 +724,7 @@
                             <div class="timeline-subtitle">Universitas Ahmad Dahlan</div>
                             <div class="timeline-description">
                                 IPK: 3.56/4.00<br>
-                                Fokus pada permrograman Web/frontend
+                                Fokus pada pemrograman Web/frontend
                             </div>
                         </div>
                     </div>
@@ -595,13 +735,8 @@
                             <div class="timeline-subtitle">Kabupaten Madiun-Jawa Timur</div>
                             <div class="timeline-subtitle">Jurusan TKJ</div>
                             <div class="timeline-description">
-                               Lulus dengan nilai:85,65<br>
-                            <section class="extracurricular">
-                            <h2>Ekstrakurikuler</h2>
-                            <div class="ekskul-container">
-                             <h3>Futsal</h3>
-                            </div>
-                            </section>
+                               Lulus dengan nilai: 85.65<br>
+                            <h3>Ekstrakurikuler: Futsal</h3>
                             </div>
                         </div>
                     </div>
@@ -611,30 +746,24 @@
                             <div class="timeline-title">SMP Negeri 11 Banjarbaru</div>
                             <div class="timeline-subtitle">Banjarbaru-Kalimantan Selatan</div>
                             <div class="timeline-description">
-                                Lulusan dengan nilai:85,55
+                                Lulus dengan nilai: 85.55
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="timeline-item">
-                            <div class="timeline-date">2012 - 2028</div>
-                            <div class="timeline-title">Sd alam Muhammadiyah Banjarbaru</div>
+                            <div class="timeline-date">2012 - 2018</div>
+                            <div class="timeline-title">SD Alam Muhammadiyah Banjarbaru</div>
                             <div class="timeline-subtitle">Banjarbaru-Kalimantan Selatan</div>
                             <div class="timeline-description">
-                                Lulusan dengan nilai:87,88
-                            <section class="extracurricular">
-                            <h2>Ekstrakurikuler</h2>
-                            <div class="ekskul-container">
-                             <h3>Futsal</h3>
-                             <h3>HW</h3>
-                            </div>
-                            </section>
+                                Lulus dengan nilai: 87.88
+                            <h3>Ekstrakurikuler: Futsal, HW</h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
@@ -646,36 +775,36 @@
                     <div class="swiper-slide">
                         <div class="timeline-item">
                             <div class="timeline-date">2024 - Sekarang</div>
-                            <div class="timeline-title">Kader imm fti</div>
+                            <div class="timeline-title">Kader IMM FTI</div>
                             <div class="timeline-subtitle">Fakultas Teknologi Industri</div>
                             <div class="timeline-description">
-                            aktif mengikuti kegiatan organisasi
+                            Aktif mengikuti kegiatan organisasi.
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="timeline-item">
                             <div class="timeline-date">2025 - Sekarang</div>
-                            <div class="timeline-title">Anggota Pdd lso imm fti</div>
+                            <div class="timeline-title">Anggota PDD LSO IMM FTI</div>
                             <div class="timeline-subtitle">Universitas Ahmad Dahlan</div>
                             <div class="timeline-description">
-                                mendokumentasikan kegiatan 
+                                Mendokumentasikan kegiatan organisasi.
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="timeline-item">
                             <div class="timeline-date">2025 - Sekarang</div>
-                            <div class="timeline-title">Anggota lso imm fti</div>
-                            <div class="timeline-subtitle">Universitas Ahmadf Dahlan</div>
+                            <div class="timeline-title">Anggota LSO IMM FTI</div>
+                            <div class="timeline-subtitle">Universitas Ahmad Dahlan</div>
                             <div class="timeline-description">
                                 Berpartisipasi aktif dalam berbagai kegiatan dan program kerja organisasi.
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
@@ -715,8 +844,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
@@ -727,43 +856,43 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="achievement-card">
-                            <div class="achievement-icon">🏆</div>
-                            <div class="achievement-title">Juara 1 Bayi sehat tingkat kecamatan</div>
+                            <div class="achievement-icon"><i class="fas fa-baby"></i></div>
+                            <div class="achievement-title">Juara 1 Bayi Sehat Tingkat Kecamatan</div>
                             <div class="achievement-description">
-                                Meraih juara pertama dalam kompetisi Bayi sehat tingkat kecamatan tahun 2007.
+                                Meraih juara pertama dalam kompetisi Bayi Sehat tingkat kecamatan tahun 2007.
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="achievement-card">
-                            <div class="achievement-icon">🥈</div>
-                            <div class="achievement-title">Juara 2 Futsal antar Sd tingkat kota madya Banjarbaru Kalimantan Selatan</div>
+                            <div class="achievement-icon"><i class="fas fa-futbol"></i></div>
+                            <div class="achievement-title">Juara 2 Futsal Antar SD Tingkat Kota Madya</div>
                             <div class="achievement-description">
-                                Meraih juara kedua dalam kompetisifutsal antar sd tingkat kodya dengan tim yang solid dan inovatif.
+                                Meraih juara kedua dalam kompetisi futsal antar SD tingkat kota madya Banjarbaru, Kalimantan Selatan.
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="achievement-card">
-                            <div class="achievement-icon">🥉</div>
-                            <div class="achievement-title">Juara 3 lomba cca islami tingkat kota madya banjarbaru Banjarbaru-Kalimantan Selatan </div>
+                            <div class="achievement-icon"><i class="fas fa-quran"></i></div>
+                            <div class="achievement-title">Juara 3 Lomba CCA Islami Tingkat Kota Madya</div>
                             <div class="achievement-description">
-                                Memperoleh juara 3 pada lomba cca islami tingkat kodya.
+                                Memperoleh juara 3 pada lomba Cerdas Cermat Agama (CCA) Islami tingkat kota madya Banjarbaru, Kalimantan Selatan.
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="achievement-card">
-                            <div class="achievement-icon">📜</div>
-                            <div class="achievement-title">Sertifikat atlet terbaik sekolah </div>
+                            <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                            <div class="achievement-title">Sertifikat Atlet Terbaik Sekolah</div>
                             <div class="achievement-description">
-                                Memperoleh sertifikat profesional dalam bidang olahraga dari Sd alam Muhammadiyah.
+                                Memperoleh sertifikat atlet terbaik dalam bidang olahraga dari SD Alam Muhammadiyah.
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
@@ -898,36 +1027,18 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    // observer.unobserve(entry.target); // Keep observing if you want re-animation on scroll back
+                } else {
+                    entry.target.classList.remove('visible'); // Remove class when out of view
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.15 // Trigger when 15% of the section is visible
         });
 
         sections.forEach(section => {
             section.classList.add('animate'); // Add initial animation class
             sectionObserver.observe(section);
-        });
-
-        // Intersection Observer for skill bar animations (if any remain)
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const skillBarObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const width = entry.target.style.width;
-                    entry.target.style.setProperty('--skill-width', width); // Store original width
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.5
-        });
-
-        skillBars.forEach(bar => {
-            bar.classList.add('animate');
-            skillBarObserver.observe(bar);
         });
 
         // Intersection Observer for skill circle animations
@@ -938,7 +1049,7 @@
                     const progress = entry.target.dataset.progress;
                     entry.target.style.setProperty('--progress', progress);
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    observer.unobserve(entry.target); // Stop observing once visible
                 }
             });
         }, {
@@ -956,19 +1067,34 @@
             if (!swiperContainer) return; // Exit if container not found
 
             const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
-            const slides = swiperContainer.querySelectorAll('.swiper-slide');
+            const slides = Array.from(swiperContainer.querySelectorAll('.swiper-slide')); // Convert NodeList to Array
             const prevButton = swiperContainer.querySelector('.swiper-button-prev');
             const nextButton = swiperContainer.querySelector('.swiper-button-next');
             const paginationContainer = swiperContainer.querySelector('.swiper-pagination');
             let currentIndex = 0;
 
             function updateSwiper() {
-                const offset = -currentIndex * swiperContainer.offsetWidth;
+                // Calculate slide width dynamically to handle responsiveness
+                const slideWidth = swiperContainer.offsetWidth;
+                const offset = -currentIndex * slideWidth;
                 swiperWrapper.style.transform = `translateX(${offset}px)`;
                 updatePagination();
+
+                // Enable/disable navigation buttons based on current slide
+                if (prevButton) {
+                    prevButton.style.display = (slides.length <= 1 || currentIndex === 0) ? 'none' : 'flex';
+                }
+                if (nextButton) {
+                    nextButton.style.display = (slides.length <= 1 || currentIndex === slides.length - 1) ? 'none' : 'flex';
+                }
+                // If only one slide, hide pagination
+                if (paginationContainer) {
+                    paginationContainer.style.display = (slides.length <= 1) ? 'none' : 'block';
+                }
             }
 
             function updatePagination() {
+                if (!paginationContainer) return; // Ensure pagination container exists
                 paginationContainer.innerHTML = '';
                 slides.forEach((_, index) => {
                     const bullet = document.createElement('span');
@@ -984,15 +1110,19 @@
                 });
             }
 
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-                updateSwiper();
-            });
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1; // Loop back
+                    updateSwiper();
+                });
+            }
 
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-                updateSwiper();
-            });
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0; // Loop back
+                    updateSwiper();
+                });
+            }
 
             // Handle window resize
             window.addEventListener('resize', updateSwiper);
@@ -1001,10 +1131,10 @@
             updateSwiper();
         }
 
-        initializeSwiper('education-swiper'); // Initialize for education section
+        initializeSwiper('education-swiper');
         initializeSwiper('achievements-swiper');
         initializeSwiper('organization-swiper');
         initializeSwiper('committee-swiper');
     </script>
-</body> 
+</body>
 </html>
